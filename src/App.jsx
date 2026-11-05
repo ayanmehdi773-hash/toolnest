@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
+import { Analytics } from "@vercel/analytics/react";
 import {
   ArrowUpRight, Search, Moon, Sun, Sparkles, Image as ImageIcon, QrCode,
   FileText, Palette, Code2, Scissors, Menu, X, Upload, Download,
@@ -116,7 +117,6 @@ export default function App(){
    <div className="sidebar-bottom">
      <div className="privacy-card"><ShieldCheck size={17}/><b>Your files stay yours.</b><span>Tools process locally in your browser wherever supported.</span></div>
      
-     {/* Professional Legal Footer Links added inside sidebar */}
      <div className="legal-links-sidebar" style={{display: 'flex', flexWrap: 'wrap', gap: '6px 8px', fontSize: '11px', color: '#94a3b8', marginTop: '12px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px'}}>
        <button onClick={() => { setActive("privacy"); setMobileOpen(false); }} style={{background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0}}>Privacy Policy</button>
        <span>•</span>
@@ -191,7 +191,7 @@ export default function App(){
            <div style={{background: 'rgba(15, 23, 42, 0.6)', padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid rgba(255, 255, 255, 0.08)'}}>
              <label style={{display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '0.5rem', letterSpacing: '0.05em'}}>Direct Email Support</label>
              <a href="mailto:ayanmehdi773@gmail.com" style={{fontSize: '1.1rem', fontWeight: '600', color: '#a78bfa', textDecoration: 'none'}}>ayanmehdi773@gmail.com</a>
-             <p style={{fontSize: '0.85rem', color: '#94a3b8', marginTop: '1rem', lineHeight: '1.6'}}>
+             <p style={{fontSize: '0.85rem', color: '#94a3b8', marginTop: '1.0rem', lineHeight: '1.6'}}>
                We typically reply within 24 to 48 hours. Please include relevant details or screenshots if you are reporting any bug or feature request.
              </p>
            </div>
@@ -201,5 +201,6 @@ export default function App(){
      </div>
    ) : <div className="content inner-content">{active==="image"?<ImageTool/>:active==="qr"?<QRTool/>:active==="text"?<TextTool/>:<ColorTool/>}<button className="back-link" onClick={()=>setActive("home")}>← Back to all tools</button></div>}
   </main>
+  <Analytics />
  </div>;
 }
